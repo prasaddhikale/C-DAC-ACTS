@@ -1,0 +1,178 @@
+Assignment No.3
+
+Create a database named college
+Create a table name student in college database with following structure
+roll,name,class,marks,age with respective datatypes.
+Insert at least 5 rows in the table.
+Delete the entry of roll number 4
+Update the marks of roll number 3
+Give additional grace marks of 0.5 to all students.
+Truncate the table
+Insert the data again using multi-insert statement.
+
+mysql> create database college;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| Flipkart           |
+| assignment         |
+| b1db               |
+| cdacdb             |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| sys                |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use college;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+create table student
+    -> (roll int, name varchar(15), class varchar(15), marks float, age int)
+    -> ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| class | varchar(15) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+insert into student  (roll,name,class,marks,age) values(1,"Atharva","TY",88.34,21);
+Query OK, 1 row affected (0.00 sec)
+
+nsert into student  (roll,name,class,marks,age) values(2,"Prasad","TY",48.84,21);
+Query OK, 1 row affected (0.00 sec)
+
+insert into student  (roll,name,class,marks,age) values(3,"Nitin","SY",79.65,20);
+Query OK, 1 row affected (0.00 sec)
+
+nsert into student  (roll,name,class,marks,age) values(4,"Tejas","SY",74.75,19);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student  (roll,name,class,marks,age) values(5,"Pradip","SY",65.35,22);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student  (roll,name,class,marks,age) values(6,"Jagdish","TY",67.98,22);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student  (roll,name,class,marks,age) values(7,"Niraj","SY",56.34,21);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student
+    -> ;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 88.34 |   21 |
+|    2 | Prasad  | TY    | 48.84 |   21 |
+|    3 | Nitin   | SY    | 79.65 |   20 |
+|    4 | Tejas   | SY    | 74.75 |   19 |
+|    5 | Pradip  | SY    | 65.35 |   22 |
+|    6 | Jagdish | TY    | 67.98 |   22 |
+|    7 | Niraj   | SY    | 56.34 |   21 |
++------+---------+-------+-------+------+
+7 rows in set (0.00 sec)
+
+mysql> delete from student where roll = 4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student
+    -> ;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 88.34 |   21 |
+|    2 | Prasad  | TY    | 48.84 |   21 |
+|    3 | Nitin   | SY    | 79.65 |   20 |
+|    5 | Pradip  | SY    | 65.35 |   22 |
+|    6 | Jagdish | TY    | 67.98 |   22 |
+|    7 | Niraj   | SY    | 56.34 |   21 |
++------+---------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> update student set marks = 65.32 where roll  = 3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student
+    -> ;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 88.34 |   21 |
+|    2 | Prasad  | TY    | 48.84 |   21 |
+|    3 | Nitin   | SY    | 65.32 |   20 |
+|    5 | Pradip  | SY    | 65.35 |   22 |
+|    6 | Jagdish | TY    | 67.98 |   22 |
+|    7 | Niraj   | SY    | 56.34 |   21 |
++------+---------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> update student set marks = marks + 0.5;
+Query OK, 6 rows affected (0.01 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> select * from student;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 88.84 |   21 |
+|    2 | Prasad  | TY    | 49.34 |   21 |
+|    3 | Nitin   | SY    | 65.82 |   20 |
+|    5 | Pradip  | SY    | 65.85 |   22 |
+|    6 | Jagdish | TY    | 68.48 |   22 |
+|    7 | Niraj   | SY    | 56.84 |   21 |
++------+---------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+Truncate table student;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from student;
+Empty set (0.01 sec)
+
+insert into student  values (1,"Atharva","TY",88.34,21),(2,"Prasad","TY",74.65,20),(3,"Nitin","SY",79.65,20),(4,"Tejas","SY",74.75,19),(5,"Pradip","SY",65.35,22),(6,"Jagdish","TY",67.98,22),(7,"Niraj","SY",56.34,21);
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 88.34 |   21 |
+|    2 | Prasad  | TY    | 74.65 |   20 |
+|    3 | Nitin   | SY    | 79.65 |   20 |
+|    4 | Tejas   | SY    | 74.75 |   19 |
+|    5 | Pradip  | SY    | 65.35 |   22 |
+|    6 | Jagdish | TY    | 67.98 |   22 |
+|    7 | Niraj   | SY    | 56.34 |   21 |
++------+---------+-------+-------+------+
+7 rows in set (0.00 sec)
+
+
+
+

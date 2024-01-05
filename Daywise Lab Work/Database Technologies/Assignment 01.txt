@@ -1,0 +1,147 @@
+Assignment No. 2
+
+Create a database named college
+Create a table name student in college database with following structure
+roll,name,class,marks,age with respective datatypes.
+Check the structure of the table.
+Alter the datatype of marks from float to integer
+Alter the table to remove the column age
+Show all the tables in database college.
+Truncate the table student
+Drop the table and database also.
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Flipkart           |
+| assignment         |
+| b1db               |
+| cdacdb             |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| sys                |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| dept              |
+| emp               |
+| student           |
+| student1          |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(5)  | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(1,"Atharva","TY",89.34,22);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(2,"Aditya","SY",83.44,21);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(3,"Ayush","SY",72.34,21);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(4,"Piyush","TY",69.88,23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(5,"Pavan","TY",88.58,22);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student1  (roll,name,class,marks,age) values(6,"Kishor","SY",76.58,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student1;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    | 89.34 |   22 |
+|    2 | Aditya  | SY    | 83.44 |   21 |
+|    3 | Ayush   | SY    | 72.34 |   21 |
+|    4 | Piyush  | TY    | 69.88 |   23 |
+|    5 | Pavan   | TY    | 88.58 |   22 |
+|    6 | Kishor  | SY    | 76.58 |   20 |
++------+---------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table student1 modify column marks int;
+Query OK, 6 rows affected (0.06 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from student1;
++------+---------+-------+-------+------+
+| roll | name    | class | marks | age  |
++------+---------+-------+-------+------+
+|    1 | Atharva | TY    |    89 |   22 |
+|    2 | Aditya  | SY    |    83 |   21 |
+|    3 | Ayush   | SY    |    72 |   21 |
+|    4 | Piyush  | TY    |    70 |   23 |
+|    5 | Pavan   | TY    |    89 |   22 |
+|    6 | Kishor  | SY    |    77 |   20 |
++------+---------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table student1 drop column age;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student1;
++------+---------+-------+-------+
+| roll | name    | class | marks |
++------+---------+-------+-------+
+|    1 | Atharva | TY    |    89 |
+|    2 | Aditya  | SY    |    83 |
+|    3 | Ayush   | SY    |    72 |
+|    4 | Piyush  | TY    |    70 |
+|    5 | Pavan   | TY    |    89 |
+|    6 | Kishor  | SY    |    77 |
++------+---------+-------+-------+
+6 rows in set (0.00 sec)
+
+
+-------------------------------------------------
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| dept              |
+| emp               |
+| student           |
+| student1          |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> truncate student1;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from student1;
+Empty set (0.01 sec)
+
+mysql> drop table student1;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> drop database college;
+Query OK, 3 rows affected (0.04 sec)
+
+
+
+
