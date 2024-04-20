@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(213, 244, 255);
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+#mydiv1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid gray;
+}
+#story{
+    border: 3px solid gray;
+}
+#mydiv3{
+    /* border:3px solid gray; */
+    margin-top: 50px;
+    height: 90px;
+    text-align: center;
+}

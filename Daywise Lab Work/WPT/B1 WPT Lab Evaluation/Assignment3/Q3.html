@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Q3.css">
+    <script src=".//scripts/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#mydiv2").html("<h2>Wendy's Crazy MadLibs Story</h2>");
+                $("#mydiv3").html(`One day, my friend `+$("#nm").val()+` was visiting New York and ran into `+$("#ch").val()+` ,`+$("#nm").val()+` ran `+ 
+                $("#adv").val() +` to meet `+ $("#ch").val() +`. But `+ $("#ch").val() +` turned out to be very `+ $("#adj").val() +` and `+ $("#nm").val() +` did not enjoy the meeting. `);
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div>
+        <h1 >Mad Libs</h1>
+    </div>
+ 
+    <div class="mydiv1">
+        <form >
+            <table>
+                <tr><h1><td >Person Name :</td><td><input type="text" name="nm" id="nm"></td></h1></tr>
+                <tr><td >Character:</td><td><input type="text" name="ch" id="ch"></td></tr>
+                <tr><td >Adverb :</td><td><input type="text" name="adv" id="adv"></td></tr>
+                <tr><td >Adjective :</td><td><input type="text" name="adj" id="adj"></td></tr>
+            </table>
+            &nbsp; &nbsp;<button type="button" name ="btn" id="btn">Tell Story</button>
+
+        </form>
+
+        <h2>Wendy's Crazy MadLibs Story</h2>
+    </div>
+    <br>
+    <div id="story">
+        <div id="mydiv2"></div>
+
+        <div id="mydiv3"></div>
+    </div>
+    
+</body>
+</html>
