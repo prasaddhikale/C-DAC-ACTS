@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Mini Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      const validateInput = () => {
+        let num1 = parseFloat($("#num1").val());
+        let num2 = parseFloat($("#num2").val());
+
+        if (isNaN(num1) || isNaN(num2)) {
+          alert("Both inputs must be valid numbers.");
+          return false;
+        }
+        return true;
+      };
+
+      const multiply = () => {
+        if (!validateInput()) {
+          return;
+        }
+        let num1 = parseFloat($("#num1").val());
+        let num2 = parseFloat($("#num2").val());
+
+        let result = num1 * num2;
+        $("#result").text("Result is: " + result);
+      };
+
+      const divide = () => {
+        if (!validateInput()) {
+          return;
+        }
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        if (num2 === 0) {
+          alert("Cannot divide by zero");
+          return false;
+        }
+        let result = num1 / num2;
+        document.getElementById("result").innerHTML = "Result is " + result;
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Multiplication and Division</h1>
+    <form>
+      <div>
+        <label for="num1">First Number</label>
+        <input
+          type="number"
+          name="num1"
+          id="num1"
+          required
+          placeholder="Enter First Number"
+        />
+      </div>
+      <div>
+        <label for="num2">Second Number</label>
+        <input
+          type="number"
+          name="num2"
+          id="num2"
+          required
+          placeholder="Enter Second Number"
+        />
+      </div>
+      <div>
+        <input type="button" value="Multiply" onclick="multiply()" />
+        <button type="button" onclick="divide()">Divide</button>
+      </div>
+      <!-- <div>
+        <label for="result">Result is:</label>
+        <input type="number" name="result" id="result" />
+      </div> -->
+    </form>
+    <span id="result"> Result is: </span>
+  </body>
+</html>

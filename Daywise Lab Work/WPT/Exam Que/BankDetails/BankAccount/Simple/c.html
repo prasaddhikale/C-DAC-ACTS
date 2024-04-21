@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Bank Account Form</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form id="bankForm">
+    <div class="form-group">
+      <label for="accountHolder">Account Holder Name:</label>
+      <input type="text" class="form-control" id="accountHolder" required>
+    </div>
+    <div class="form-group">
+      <label for="accountNumber">Account Number:</label>
+      <input type="text" class="form-control" id="accountNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="balance">Balance (Rs):</label>
+      <input type="number" class="form-control" id="balance" required min="5000">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="saveInfo()">Save Info</button>
+    <button type="button" class="btn btn-secondary" onclick="displayAccountInfo()">Account Info</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  var accountArray = [];
+
+  function saveInfo() {
+    var accountHolder = $("#accountHolder").val();
+    var accountNumber = $("#accountNumber").val();
+    var balance = $("#balance").val();
+
+    if (accountHolder && accountNumber && balance) {
+      balance = parseFloat(balance);
+      if (!isNaN(balance) && balance >= 5000) {
+        var accountInfo = {
+          accountHolder: accountHolder,
+          accountNumber: accountNumber,
+          balance: balance
+        };
+
+        accountArray.push(accountInfo);
+        console.log("Account information saved:", accountInfo);
+        // You can reset the form if needed
+        // $("#bankForm")[0].reset();
+      } else {
+        alert("Balance must be a numeric value and cannot be below Rs 5000.");
+      }
+    } else {
+      alert("All fields are mandatory.");
+    }
+  }
+
+  function displayAccountInfo() {
+    console.log("All account details:", accountArray);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <title>Bank Account Details</title>
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+    <!-- Create a HTML5 form to accept Bank Account details: 
+    the form contains following fileds Account ID , Account Name , Account type which is drop down which include saving and current option , balanace , creation date 
+   • Use Javascript/Jquery to validate the form: 
+   o All fields are mandatory 
+   o Balance must be numeric and cannot be below Rs 5000
+   • Use Bootstrap to style this form. 
+   • When user clicks on “Save info” button, the account information on form must be converted into a Javascript object and stored 
+   into an Javascriptarray. 
+   • When user clicks on “Account Info” button, all account details stored in array must be displayed in console. -->
+   <div style="border: 2px solid black; margin: 20px 300px 20px 300px;">
+    <h1 style="text-align: center;">Account Details</h1>
+   
+    <div class="container form-container">
+      <form id="bankForm">
+        <div class="form-group row">
+          <label for="accountId" class="col-sm-2 col-form-label">Account ID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="accountId" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="accountName" class="col-sm-2 col-form-label">Account Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="accountName" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="accountType" class="col-sm-2 col-form-label">Account Type</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="accountType" required>
+              <option value="saving">Saving</option>
+              <option value="current">Current</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="balance" class="col-sm-2 col-form-label">Balance</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="balance" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="creationDate" class="col-sm-2 col-form-label">Creation Date</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="creationDate" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-primary" onclick="saveInfo()">Save Info</button>
+            <button type="button" class="btn btn-success" onclick="displayAccountInfo()">Account Info</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+</div>
+<script>
+  function saveInfo() {
+    var accountId = $('#accountId').val();
+    var accountName = $('#accountName').val();
+    var accountType = $('#accountType').val();
+    var balance = parseFloat($('#balance').val());
+    var creationDate = $('#creationDate').val();
+
+    // Validation
+    if (!accountId || !accountName || !accountType || isNaN(balance) || balance < 5000 || !creationDate) {
+      alert('Please fill all fields correctly.');
+      return;
+    }
+
+    if( balance < 5000 ){
+      alert()
+    }
+
+    // Create JavaScript object
+    var accountInfo = {
+      accountId: accountId,
+      accountName: accountName,
+      accountType: accountType,
+      balance: balance,
+      creationDate: creationDate
+    };
+
+    // Store in array
+    if (!window.accountArray) {
+      window.accountArray = [];
+    }
+
+    window.accountArray.push(accountInfo);
+
+    // Clear form fields
+    $('#bankForm')[0].reset();
+  }
+
+  function displayAccountInfo() {
+    if (window.accountArray && window.accountArray.length > 0) {
+      console.log("Account Information:");
+      window.accountArray.forEach(function(account) {
+        console.log(account);
+      });
+    } else {
+      console.log("No account information available.");
+    }
+  }
+</script>
+
+</body>
+</html>
