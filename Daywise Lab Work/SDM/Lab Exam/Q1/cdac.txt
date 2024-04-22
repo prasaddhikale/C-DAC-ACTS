@@ -1,0 +1,5 @@
+Java is great
+Scripting is easy
+I love Java
+Python is good, too
+Hello, Java World!

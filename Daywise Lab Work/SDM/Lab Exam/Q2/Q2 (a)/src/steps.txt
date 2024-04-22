@@ -1,0 +1,2 @@
+docker build -t factorial .
+docker run factorial
