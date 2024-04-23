@@ -1,0 +1,15 @@
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\bin\Debug\net7.0\day3Assignment2EmployeeMaxSalary.exe
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\bin\Debug\net7.0\day3Assignment2EmployeeMaxSalary.deps.json
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\bin\Debug\net7.0\day3Assignment2EmployeeMaxSalary.runtimeconfig.json
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\bin\Debug\net7.0\day3Assignment2EmployeeMaxSalary.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\bin\Debug\net7.0\day3Assignment2EmployeeMaxSalary.pdb
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.csproj.AssemblyReference.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.AssemblyInfoInputs.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.AssemblyInfo.cs
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.csproj.CoreCompileInputs.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\refint\day3Assignment2EmployeeMaxSalary.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.pdb
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\day3Assignment2EmployeeMaxSalary.genruntimeconfig.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3Assignment2EmployeeMaxSalary\obj\Debug\net7.0\ref\day3Assignment2EmployeeMaxSalary.dll

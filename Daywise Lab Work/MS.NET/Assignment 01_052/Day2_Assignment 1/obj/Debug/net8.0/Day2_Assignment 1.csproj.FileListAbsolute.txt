@@ -1,0 +1,14 @@
+C:\Users\prasa\source\repos\Day2_Assignment 1\bin\Debug\net8.0\Day2_Assignment 1.exe
+C:\Users\prasa\source\repos\Day2_Assignment 1\bin\Debug\net8.0\Day2_Assignment 1.deps.json
+C:\Users\prasa\source\repos\Day2_Assignment 1\bin\Debug\net8.0\Day2_Assignment 1.runtimeconfig.json
+C:\Users\prasa\source\repos\Day2_Assignment 1\bin\Debug\net8.0\Day2_Assignment 1.dll
+C:\Users\prasa\source\repos\Day2_Assignment 1\bin\Debug\net8.0\Day2_Assignment 1.pdb
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.AssemblyInfoInputs.cache
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.AssemblyInfo.cs
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.csproj.CoreCompileInputs.cache
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.dll
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\refint\Day2_Assignment 1.dll
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.pdb
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\Day2_Assignment 1.genruntimeconfig.cache
+C:\Users\prasa\source\repos\Day2_Assignment 1\obj\Debug\net8.0\ref\Day2_Assignment 1.dll

@@ -1,0 +1,15 @@
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\bin\Debug\net7.0\day3labassignment.exe
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\bin\Debug\net7.0\day3labassignment.deps.json
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\bin\Debug\net7.0\day3labassignment.runtimeconfig.json
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\bin\Debug\net7.0\day3labassignment.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\bin\Debug\net7.0\day3labassignment.pdb
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.csproj.AssemblyReference.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.AssemblyInfoInputs.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.AssemblyInfo.cs
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.csproj.CoreCompileInputs.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\refint\day3labassignment.dll
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.pdb
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\day3labassignment.genruntimeconfig.cache
+C:\Users\dac.STUDENTSDC\Desktop\DotNetLabB1\day3labassignment\obj\Debug\net7.0\ref\day3labassignment.dll
