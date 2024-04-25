@@ -1,0 +1,110 @@
+Microsoft Windows [Version 10.0.22631.2861]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\dac.STUDENTSDC\Desktop\LabExam_B1-052>mongosh
+Current Mongosh Log ID: 65928b30cccaed7cef262ca6
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-01-01T02:09:03.590+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs;
+admin         40.00 KiB
+atharavavva   60.00 KiB
+config       108.00 KiB
+dacdb         72.00 KiB
+database2    160.00 KiB
+exam           8.00 KiB
+local         72.00 KiB
+sample_db      8.00 KiB
+sushant       40.00 KiB
+test          60.00 KiB
+
+
+test> use sample_db
+switched to db sample_db
+
+sample_db> db.dropDatabase()
+{ ok: 1, dropped: 'sample_db' }
+sample_db>
+
+sample_db> use simple_db
+simple_db> db.createCollection("my_col")
+{ ok: 1 }
+
+simple_db> show collections
+my_col
+
+simple_db>  db.my_col.insertMany([
+... {
+... title: "MongoDB Overview",
+...   description: "MongoDB is no SQL database",
+...   by: "tutorials point",
+...  url: "http://www.tutorialspoint.com",
+...   tags: ["mongodb", "database", "NoSQL"],
+... likes: 100
+... },
+... {
+... title: "NoSQL Database",
+...   description: "NoSQL database doesn't have tables",
+...  by: "tutorials point",
+...  url: "http://www.tutorialspoint.com",
+... tags: ["mongodb", "database", "NoSQL"],
+...    likes: 20,
+...  comments: [
+... {
+...    user: "user1",
+...   message: "My first comment",
+...  dateCreated: new Date(2013,11,10,2,35),
+...   like: 0
+... }
+... ]
+... }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65928d3bcccaed7cef262ca7'),
+    '1': ObjectId('65928d3bcccaed7cef262ca8')
+  }
+}
+
+**********************************************************************************
+Quetion 5_i
+**********************************************************************************
+simple_db> db.my_col.update(
+...   { "comments.user": "user1" }, // Match documents where comments.user is 'user1'
+...   { $set: { "comments.$.url": "http://www.google.com" } }, // Update the URL
+...   { multi: true } // Update multiple matching documents (if multiple exist)
+... )
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+***********************************************************************************
+Quetion 5_ii
+***********************************************************************************
+simple_db> db.my_col.find({ likes: { $gt: 20 } })
+[
+  {
+    _id: ObjectId('65928d3bcccaed7cef262ca7'),
+    title: 'MongoDB Overview',
+    description: 'MongoDB is no SQL database',
+    by: 'tutorials point',
+    url: 'http://www.tutorialspoint.com',
+    tags: [ 'mongodb', 'database', 'NoSQL' ],
+    likes: 100
+  }
+]
+simple_db>
