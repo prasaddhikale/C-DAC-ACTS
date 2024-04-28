@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LabEmpMVC.Models.Emp>
+
+@{
+    ViewData["Title"] = "ViewEmployee";
+}
+
+<h1>ViewEmployee</h1>
+
+<p>
+    <a asp-action="AddEmployee">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Basic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptNoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Basic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptNoNavigation.DeptNo)
+            </td>
+            
+        </tr>
+}
+       <a asp-action="">Back to Index </a>
+    </tbody>
+</table>
