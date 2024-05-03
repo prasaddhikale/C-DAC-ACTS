@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EmployeesMVC.Models.TblEmployee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-flex justify-content-center"><h1>All Employees</h1></div>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeDob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeSalary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeDob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeSalary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
