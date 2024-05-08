@@ -1,0 +1,773 @@
+CREATE DATABASE ORG; 
+SHOW DATABASES; 
+USE ORG; 
+CREATE TABLE Worker ( 
+ WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ FIRST_NAME CHAR(25), 
+ LAST_NAME CHAR(25), 
+ SALARY INT(15), 
+ JOINING_DATE DATETIME, 
+ DEPARTMENT CHAR(25) 
+); 
+
+
+INSERT INTO Worker 
+ (WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES 
+ (001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'), 
+ (002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'), 
+ (003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'), 
+ (004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'), 
+ (005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'), 
+ (006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'), 
+ (007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'), 
+ (008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin'); 
+CREATE TABLE Bonus ( 
+ WORKER_REF_ID INT, 
+ BONUS_AMOUNT INT(10), 
+ BONUS_DATE DATETIME, 
+ FOREIGN KEY (WORKER_REF_ID) 
+ REFERENCES Worker(WORKER_ID) 
+ ON DELETE CASCADE 
+); 
+
+
+INSERT INTO Bonus 
+ (WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE) VALUES 
+ (001, 5000, '16-02-20'), 
+ (002, 3000, '16-06-11'), 
+ (003, 4000, '16-02-20'), 
+ (001, 4500, '16-02-20'), 
+ (002, 3500, '16-06-11'); 
+
+
+CREATE TABLE Title ( 
+ WORKER_REF_ID INT, 
+ WORKER_TITLE CHAR(25), 
+ AFFECTED_FROM DATETIME, 
+ FOREIGN KEY (WORKER_REF_ID) 
+ REFERENCES Worker(WORKER_ID) 
+ ON DELETE CASCADE 
+); 
+
+
+INSERT INTO Title 
+ (WORKER_REF_ID, WORKER_TITLE, AFFECTED_FROM) VALUES 
+ (001, 'Manager', '2016-02-20 00:00:00'), 
+ (002, 'Executive', '2016-06-11 00:00:00'), 
+ (008, 'Executive', '2016-06-11 00:00:00'), 
+ (005, 'Manager', '2016-06-11 00:00:00'), 
+ (004, 'Asst. Manager', '2016-06-11 00:00:00'), 
+ (007, 'Executive', '2016-06-11 00:00:00'), 
+ (006, 'Lead', '2016-06-11 00:00:00'), 
+ (003, 'Lead', '2016-06-11 00:00:00');
+
+
+
+
+C:\Users\prasa>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.35 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| advjava            |
+| advjava1           |
+| emp-dept           |
+| ems                |
+| information_schema |
+| ipl                |
+| ipl3               |
+| iplday15           |
+| mysql              |
+| performance_schema |
+| spring-boot        |
+| spring-boot1       |
+| spring-boot5       |
+| spring_mvc1        |
+| sys                |
++--------------------+
+15 rows in set (0.07 sec)
+
+mysql> create database ORG
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| advjava            |
+| advjava1           |
+| emp-dept           |
+| ems                |
+| information_schema |
+| ipl                |
+| ipl3               |
+| iplday15           |
+| mysql              |
+| org                |
+| performance_schema |
+| spring-boot        |
+| spring-boot1       |
+| spring-boot5       |
+| spring_mvc1        |
+| sys                |
++--------------------+
+16 rows in set (0.00 sec)
+
+mysql> use org;
+Database changed
+
+
+mysql> create table worker(
+    -> WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,FIRST_NAME VARCHAR(25),LAST_NAME VARCHAR(25),SALARY INT(15),JOINING_DATE DATETIME,
+    -> DEPARTMENT VARCHAR(25));
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+
+
+mysql> show tables;
++---------------+
+| Tables_in_org |
++---------------+
+| worker        |
++---------------+
+1 row in set (0.02 sec)
+
+
+mysql> desc worker;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| WORKER_ID    | int         | NO   | PRI | NULL    | auto_increment |
+| FIRST_NAME   | varchar(25) | YES  |     | NULL    |                |
+| LAST_NAME    | varchar(25) | YES  |     | NULL    |                |
+| SALARY       | int         | YES  |     | NULL    |                |
+| JOINING_DATE | datetime    | YES  |     | NULL    |                |
+| DEPARTMENT   | varchar(25) | YES  |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.02 sec)
+
+
+mysql> insert into worker
+    -> (WORKER_ID,FIRST_NAME,LAST_NAME,SALARY,JOINING_DATE,DEPARTMENT)
+    -> VALUES(001,'Monika','Arora',100000,'14-02-20 09.00.00','HR');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+
+mysql> select * from worker;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
++-----------+------------+-----------+--------+---------------------+------------+
+1 row in set (0.01 sec)
+
+
+mysql> insert into worker
+    -> (WORKER_ID,FIRST_NAME,LAST_NAME,SALARY,JOINING_DATE,DEPARTMENT)
+    -> VALUES(002,'Niharika','Verma',80000,'14-06-11 09.00.00','Admin'),
+    -> (003,'Vishal','Singhal',300000,'14-02-20 09.00.00','HR');
+Query OK, 2 rows affected, 2 warnings (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 2
+
+
+mysql> select * from worker;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
++-----------+------------+-----------+--------+---------------------+------------+
+3 rows in set (0.00 sec)
+
+
+mysql> insert into worker
+    -> (WORKER_ID,FIRST_NAME,LAST_NAME,SALARY,JOINING_DATE,DEPARTMENT)VALUES
+    -> (004,'Amitabh','Singh',500000,'14-02-20 09.00.00','Admin'),
+    -> (005,'Vivek','Bhati',500000,'14-06-11 09.00.00','Admin'),
+    -> (006,'Vipul','Diwan',200000,'14-06-11 09.00.00','Account'),
+    -> (007,'Satish','Kumar',75000,'14-01-20 09.00.00','Account'),
+    -> (008,'Geetika','Chauhan',90000,'14-04-11 09.00.00','Admin');
+Query OK, 5 rows affected, 5 warnings (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 5
+
+
+mysql> select * from worker;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 09:00:00 | Admin      |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      |
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 09:00:00 | Account    |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 09:00:00 | Account    |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+8 rows in set (0.00 sec)
+
+
+mysql> create table bonus(
+    -> WORKER_REF_ID INT,
+    -> BONUS_AMOUNT INT(10),
+    -> BONUS_DATE DATETIME,
+    -> FOREIGN KEY (WORKER_REF_ID)
+    -> REFERENCES WORKER(WORKER_ID)
+    -> ON DELETE CASCADE);
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+
+mysql> desc bonus;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| WORKER_REF_ID | int      | YES  | MUL | NULL    |       |
+| BONUS_AMOUNT  | int      | YES  |     | NULL    |       |
+| BONUS_DATE    | datetime | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+
+mysql> insert into bonus
+    -> (WORKER_REF_ID,BONUS_AMOUNT,BONUS_DATE)VALUES
+    -> (001,5000,'16-02-20');
+Query OK, 1 row affected (0.02 sec)
+
+
+mysql> select * from bonus;
++---------------+--------------+---------------------+
+| WORKER_REF_ID | BONUS_AMOUNT | BONUS_DATE          |
++---------------+--------------+---------------------+
+|             1 |         5000 | 2016-02-20 00:00:00 |
++---------------+--------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> insert into bonus
+    -> (WORKER_REF_ID,BONUS_AMOUNT,BONUS_DATE)VALUES
+    -> (002,3000,'16-06-11'),
+    -> (003,4000,'16-02-20'),
+    -> (001,4500,'16-02-20'),
+    -> (002,3500,'16-06-11');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from bonus;
++---------------+--------------+---------------------+
+| WORKER_REF_ID | BONUS_AMOUNT | BONUS_DATE          |
++---------------+--------------+---------------------+
+|             1 |         5000 | 2016-02-20 00:00:00 |
+|             2 |         3000 | 2016-06-11 00:00:00 |
+|             3 |         4000 | 2016-02-20 00:00:00 |
+|             1 |         4500 | 2016-02-20 00:00:00 |
+|             2 |         3500 | 2016-06-11 00:00:00 |
++---------------+--------------+---------------------+
+5 rows in set (0.00 sec)
+
+
+mysql> create table title(
+    -> WORKER_REF_ID INT,
+    -> WORKER_TITLE VARCHAR(25),
+    -> AFFECTED_FROM DATETIME,
+    -> FOREIGN KEY (WORKER_REF_ID)
+    -> REFERENCES WORKER(WORKER_ID)
+    -> ON DELETE CASCADE);
+Query OK, 0 rows affected (0.03 sec)
+
+
+mysql> desc title;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| WORKER_REF_ID | int         | YES  | MUL | NULL    |       |
+| WORKER_TITLE  | varchar(25) | YES  |     | NULL    |       |
+| AFFECTED_FROM | datetime    | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> insert into title
+    -> (WORKER_REF_ID,WORKER_TITLE,AFFECTED_FROM)VALUES
+    -> (001,'Manager','2016-02-20 00:00:00');
+Query OK, 1 row affected (0.02 sec)
+
+
+mysql> select * from title;
++---------------+--------------+---------------------+
+| WORKER_REF_ID | WORKER_TITLE | AFFECTED_FROM       |
++---------------+--------------+---------------------+
+|             1 | Manager      | 2016-02-20 00:00:00 |
++---------------+--------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> insert into title
+    -> (WORKER_REF_ID,WORKER_TITLE,AFFECTED_FROM)VALUES
+    -> (002,'Executive','2016-06-11 00:00:00'),
+    -> (008,'Executive','2016-06-11 00:00:00'),
+    -> (005,'Manager','2016-06-11 00:00:00'),
+    -> (004,'Asst. Manager','2016-06-11 00:00:00'),
+    -> (007,'Executive','2016-06-11 00:00:00'),
+    -> (006,'Lead','2016-06-11 00:00:00'),
+    -> (003,'Lead','2016-06-11 00:00:00');
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from title;
++---------------+---------------+---------------------+
+| WORKER_REF_ID | WORKER_TITLE  | AFFECTED_FROM       |
++---------------+---------------+---------------------+
+|             1 | Manager       | 2016-02-20 00:00:00 |
+|             2 | Executive     | 2016-06-11 00:00:00 |
+|             8 | Executive     | 2016-06-11 00:00:00 |
+|             5 | Manager       | 2016-06-11 00:00:00 |
+|             4 | Asst. Manager | 2016-06-11 00:00:00 |
+|             7 | Executive     | 2016-06-11 00:00:00 |
+|             6 | Lead          | 2016-06-11 00:00:00 |
+|             3 | Lead          | 2016-06-11 00:00:00 |
++---------------+---------------+---------------------+
+8 rows in set (0.00 sec)
+
+
+
+i. WRITE AN SQL QUERY TO FETCH FULLNAME , SALARY , JOINING_DATE AND DEPARTMENT FROM 
+WORKER TABLE. 
+mysql> SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS FULLNAME, SALARY, JOINING_DATE, DEPARTMENT
+    -> FROM Worker;
++-----------------+--------+---------------------+------------+
+| FULLNAME        | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------------+--------+---------------------+------------+
+| Monika Arora    | 100000 | 2014-02-20 09:00:00 | HR         |
+| Niharika Verma  |  80000 | 2014-06-11 09:00:00 | Admin      |
+| Vishal Singhal  | 300000 | 2014-02-20 09:00:00 | HR         |
+| Amitabh Singh   | 500000 | 2014-02-20 09:00:00 | Admin      |
+| Vivek Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      |
+| Vipul Diwan     | 200000 | 2014-06-11 09:00:00 | Account    |
+| Satish Kumar    |  75000 | 2014-01-20 09:00:00 | Account    |
+| Geetika Chauhan |  90000 | 2014-04-11 09:00:00 | Admin      |
++-----------------+--------+---------------------+------------+
+8 rows in set (0.01 sec)
+
+
+
+ii.WRITE AN SQL QUERY TO FETCH ID , FULLNAME , SALARY AND DEPARTMENT WHOSE DEPARTMENT 
+IS HR OR ADMIN 
+mysql> SELECT WORKER_ID AS ID, CONCAT(FIRST_NAME, ' ', LAST_NAME) AS FULLNAME, SALARY, DEPARTMENT
+    -> FROM Worker
+    -> WHERE DEPARTMENT IN ('HR', 'Admin');
++----+-----------------+--------+------------+
+| ID | FULLNAME        | SALARY | DEPARTMENT |
++----+-----------------+--------+------------+
+|  1 | Monika Arora    | 100000 | HR         |
+|  2 | Niharika Verma  |  80000 | Admin      |
+|  3 | Vishal Singhal  | 300000 | HR         |
+|  4 | Amitabh Singh   | 500000 | Admin      |
+|  5 | Vivek Bhati     | 500000 | Admin      |
+|  8 | Geetika Chauhan |  90000 | Admin      |
++----+-----------------+--------+------------+
+6 rows in set (0.00 sec)
+
+
+
+iii.WRITE AN SQL QUERY TO FETCH ID , FULLNAME , SALARY WHOSE FIRST_NAME ENDS WITH 'a' 
+mysql> SELECT WORKER_ID AS ID, CONCAT(FIRST_NAME, ' ', LAST_NAME) AS FULLNAME, SALARY
+    -> FROM Worker
+    -> WHERE RIGHT(FIRST_NAME, 1) = 'a';
++----+-----------------+--------+
+| ID | FULLNAME        | SALARY |
++----+-----------------+--------+
+|  1 | Monika Arora    | 100000 |
+|  2 | Niharika Verma  |  80000 |
+|  8 | Geetika Chauhan |  90000 |
++----+-----------------+--------+
+3 rows in set (0.01 sec)
+
+
+
+iv. WRITE AN SQL QUERY TO FEACH ALL RECORDS OF WORKER TABLE WHO HAVE JOIN IN FEB 2020 
+mysql> select * from worker
+    -> WHERE JOINING_DATE >= '2020-02-01' AND JOINING_DATE < '2020-03-01';
+Empty set (0.00 sec)
+
+
+
+V. WRITE AN SQL QUERY TO FEACH ALL RECORDS OF WORKER TABLE WHO HAVE SALARY >=50000 
+AND <=100000.
+mysql> SELECT *
+    -> FROM Worker
+    -> WHERE SALARY BETWEEN 50000 AND 100000;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 09:00:00 | Account    |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
+
+
+
+i. WRITE AN SQL QUERY TO DISPLAY NUMBER OF WORKER IN EACH DEPARTMENT ALONG WITH 
+UNIQUE DEPARTMENT NAME
+mysql> SELECT COUNT(*) AS Number_of_Workers, DEPARTMENT AS Unique_Department_Name
+    -> FROM Worker
+    -> GROUP BY DEPARTMENT;
++-------------------+------------------------+
+| Number_of_Workers | Unique_Department_Name |
++-------------------+------------------------+
+|                 2 | HR                     |
+|                 4 | Admin                  |
+|                 2 | Account                |
++-------------------+------------------------+
+3 rows in set (0.02 sec)
+
+
+
+ii.WRITE AN SQL QUERY TO DISPLAY DEPARTMENT NAME AND TOTAL BONUS AMOUNT TO BE PAID IN 
+EACH DEPARTMENT
+mysql> SELECT w.DEPARTMENT AS Department_Name, SUM(b.BONUS_AMOUNT) AS Total_Bonus_Amount
+    -> FROM Worker w
+    -> LEFT JOIN Bonus b ON w.WORKER_ID = b.WORKER_REF_ID
+    -> GROUP BY w.DEPARTMENT;
++-----------------+--------------------+
+| Department_Name | Total_Bonus_Amount |
++-----------------+--------------------+
+| HR              |              13500 |
+| Admin           |               6500 |
+| Account         |               NULL |
++-----------------+--------------------+
+3 rows in set (0.02 sec)
+
+
+
+iii.WRITE AN SQL QUERY TO DISPALY THE FULLNAME , SALARY , TOTAL YEARS OF EXPERIANCE OF 
+EACH WORKER 
+mysql> SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS FULLNAME,SALARY,TIMESTAMPDIFF
+    ->(YEAR, JOINING_DATE, CURDATE()) AS Total_Experience_Years
+    -> FROM Worker;
++-----------------+--------+------------------------+
+| FULLNAME        | SALARY | Total_Experience_Years |
++-----------------+--------+------------------------+
+| Monika Arora    | 100000 |                      9 |
+| Niharika Verma  |  80000 |                      9 |
+| Vishal Singhal  | 300000 |                      9 |
+| Amitabh Singh   | 500000 |                      9 |
+| Vivek Bhati     | 500000 |                      9 |
+| Vipul Diwan     | 200000 |                      9 |
+| Satish Kumar    |  75000 |                      9 |
+| Geetika Chauhan |  90000 |                      9 |
++-----------------+--------+------------------------+
+8 rows in set (0.01 sec)
+
+
+
+iv.WRITE AN SQL QUERY TO DISPALY THE DETAILS OF THE WORKER WHO IS MANAGER 
+mysql> SELECT w.*
+    -> FROM Worker w
+    -> JOIN Title t ON w.WORKER_ID = t.WORKER_REF_ID
+    -> WHERE t.WORKER_TITLE = 'Manager';
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+2 rows in set (0.00 sec)
+
+
+
+
+3. CREATE SAMPLE_DB IN MONGO DATABASE 
+ -CREATE COLLECTION IN SIMPLE_DB AS MY_COL 
+ INSERT THE BELOW DATA 
+ db.mycol.insert([ 
+ { 
+ title: "MongoDB Overview", 
+ description: "MongoDB is no SQL database", 
+ by: "tutorials point", 
+ url: "http://www.tutorialspoint.com", 
+ tags: ["mongodb", "database", "NoSQL"], 
+ likes: 100 
+ }, 
+ { 
+ title: "NoSQL Database", 
+ description: "NoSQL database doesn't have tables", 
+ by: "tutorials point", 
+ url: "http://www.tutorialspoint.com", 
+ tags: ["mongodb", "database", "NoSQL"], 
+ likes: 20, 
+ comments: [ 
+ { 
+ user:"user1", 
+ message: "My first comment", 
+ dateCreated: new Date(2013,11,10,2,35), 
+ like: 0 
+ } 
+ ] 
+ } 
+]) 
+1.SHOW THE DOCUMENTS THAT HAS LIKES GREATER THAN 10 
+2.SHOW THE DOCUMENTS THAT HAS USER NAME AS ‘user1’ 
+
+
+
+
+test> show dbs
+admin      40.00 KiB
+config    108.00 KiB
+local      72.00 KiB
+practice   72.00 KiB
+
+test> use SAMPLE_DB
+switched to db SAMPLE_DB
+
+SAMPLE_DB> db.createCollection("my_col")
+{ ok: 1 }
+
+SAMPLE_DB> show collections
+my_col
+
+
+SAMPLE_DB> db.my_col.insertMany([
+...   {
+...     title: "MongoDB Overview",
+...     description: "MongoDB is no SQL database",
+...     by: "tutorials point",
+...     url: "http://www.tutorialspoint.com",
+...     tags: ["mongodb", "database", "NoSQL"],
+...     likes: 100
+...   },
+...  {
+...     title: "NoSQL Database",
+...     description: "NoSQL database doesn't have tables",
+...     by: "tutorials point",
+...     url: "http://www.tutorialspoint.com",
+...     tags: ["mongodb", "database", "NoSQL"],
+...     likes: 20,
+...     comments: [
+... {
+...         user: "user1",
+...         message: "My first comment",
+...         dateCreated: new Date(2013,11,10,2,35),
+...         like: 0
+... }
+... ]
+... }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6591bac86d3351ae2571aa66'),
+    '1': ObjectId('6591bac86d3351ae2571aa67')
+  }
+}
+
+
+1.SHOW THE DOCUMENTS THAT HAS LIKES GREATER THAN 10 
+SAMPLE_DB> db.my_col.find({likes:{$gt:10}})
+[
+  {
+    _id: ObjectId('6591bac86d3351ae2571aa66'),
+    title: 'MongoDB Overview',
+    description: 'MongoDB is no SQL database',
+    by: 'tutorials point',
+    url: 'http://www.tutorialspoint.com',
+    tags: [ 'mongodb', 'database', 'NoSQL' ],
+    likes: 100
+  },
+  {
+    _id: ObjectId('6591bac86d3351ae2571aa67'),
+    title: 'NoSQL Database',
+    description: "NoSQL database doesn't have tables",
+    by: 'tutorials point',
+    url: 'http://www.tutorialspoint.com',
+    tags: [ 'mongodb', 'database', 'NoSQL' ],
+    likes: 20,
+    comments: [
+      {
+        user: 'user1',
+        message: 'My first comment',
+        dateCreated: ISODate('2013-12-09T21:05:00.000Z'),
+        like: 0
+      }
+    ]
+  }
+]
+
+
+2.SHOW THE DOCUMENTS THAT HAS USER NAME AS ‘user1’ 
+SAMPLE_DB> db.my_col.find({ "comments.user": "user1" })
+[
+  {
+    _id: ObjectId('6591bac86d3351ae2571aa67'),
+    title: 'NoSQL Database',
+    description: "NoSQL database doesn't have tables",
+    by: 'tutorials point',
+    url: 'http://www.tutorialspoint.com',
+    tags: [ 'mongodb', 'database', 'NoSQL' ],
+    likes: 20,
+    comments: [
+      {
+        user: 'user1',
+        message: 'My first comment',
+        dateCreated: ISODate('2013-12-09T21:05:00.000Z'),
+        like: 0
+      }
+    ]
+  }
+]
+
+
+
+ii. CREATE A FUNCTION IN MYSQL THAT WILL ACCEPT THE ONE INPUT PARAMETER AS WORKER ID 
+AND BASED ON THE ID 
+ RETURN THE TOTAL SALARY IN EACH DEPARTMENTS
+
+DELIMITER &&
+
+CREATE FUNCTION GetTotalSalaryByDepartment(workerId INT)
+RETURNS TEXT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE result TEXT;
+
+    SELECT GROUP_CONCAT(CONCAT('Department: ', w.DEPARTMENT, ', Total Salary: ', SUM(w.SALARY))) 
+    INTO result
+    FROM Worker w
+    WHERE w.WORKER_ID = workerId
+    GROUP BY w.DEPARTMENT;
+
+    RETURN result;
+END &&
+
+DELIMITER ;
+
+
+
+4 CREATE A CURSOR IN MYSQL, BY USING THE CURSOR RETURN THE COMMA SEPRATED LIST OF 
+WORKER NAMES 5 MARKS
+ eg. Monika , Vishal , Satish , Vipul ...... 
+
+mysql> CREATE PROCEDURE GetWorkerNamesList()
+    -> BEGIN
+    ->     DECLARE done INT DEFAULT FALSE;
+    ->     DECLARE workerName VARCHAR(255);
+    ->     DECLARE workerList VARCHAR(5000) DEFAULT '';
+    ->
+    ->     -- Declare a cursor to select worker names
+    ->     DECLARE workerCursor CURSOR FOR
+    ->         SELECT FIRST_NAME FROM Worker;
+    ->
+    ->     -- Declare handler for the cursor
+    ->     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    ->
+    ->     OPEN workerCursor;
+    ->
+    ->     workerLoop: LOOP
+    ->         FETCH workerCursor INTO workerName;
+    ->
+    ->         IF done THEN
+    ->             LEAVE workerLoop;
+    ->         END IF;
+    ->
+    ->         -- Concatenate worker names with comma
+    ->         IF workerList = '' THEN
+    ->             SET workerList = workerName;
+    ->         ELSE
+    ->             SET workerList = CONCAT(workerList, ', ', workerName);
+    ->         END IF;
+    ->     END LOOP;
+    ->
+    ->     CLOSE workerCursor;
+    ->
+    ->     -- Return the comma-separated list of worker names
+    ->     SELECT workerList AS WorkerNames;
+    -> END &&
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> CALL GetWorkerNamesList();
++------------------------------------------------------------------+
+| WorkerNames                                                      |
++------------------------------------------------------------------+
+| Monika, Niharika, Vishal, Amitabh, Vivek, Vipul, Satish, Geetika |
++------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+
+5 CREATE A AFTER INSERT TRIGGER IN MYSQL .. 5 MARKS 
+ CREATE AN EMP_DETAILS TABLES AS FOLLOWS 
+ ID , FIRST_NAME , LAST_NAME , DEPARTMENT_ID ,SALARY 
+ WHEN AN INSERT HAPPEN INTO THE EMP_DETAILS TABLE INSERT THE FIRST_NAME , LAST_NAME 
+AND SALARY INTO THE 
+ EMP_LOG_DETAILS TABLE 
+
+
+mysql> CREATE TABLE EMP_DETAILS (
+    ->     ID INT AUTO_INCREMENT PRIMARY KEY,
+    ->     FIRST_NAME VARCHAR(50),
+    ->     LAST_NAME VARCHAR(50),
+    ->     DEPARTMENT_ID INT,
+    ->     SALARY DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> -- Create EMP_LOG_DETAILS table
+mysql> CREATE TABLE EMP_LOG_DETAILS (
+    ->     LOG_ID INT AUTO_INCREMENT PRIMARY KEY,
+    ->     FIRST_NAME VARCHAR(50),
+    ->     LAST_NAME VARCHAR(50),
+    ->     SALARY DECIMAL(10, 2),
+    ->     INSERTED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
+
+mysql> DELIMITER &&
+mysql>
+mysql> CREATE TRIGGER after_emp_insert
+    -> AFTER INSERT ON EMP_DETAILS
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     INSERT INTO EMP_LOG_DETAILS (FIRST_NAME, LAST_NAME, SALARY)
+    ->     VALUES (NEW.FIRST_NAME, NEW.LAST_NAME, NEW.SALARY);
+    -> END;
+    -> &&
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> INSERT INTO EMP_DETAILS (FIRST_NAME, LAST_NAME, DEPARTMENT_ID, SALARY)
+    -> VALUES ('John', 'Doe', 1, 50000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM EMP_LOG_DETAILS;
++--------+------------+-----------+----------+---------------------+
+| LOG_ID | FIRST_NAME | LAST_NAME | SALARY   | INSERTED_AT         |
++--------+------------+-----------+----------+---------------------+
+|      1 | John       | Doe       | 50000.00 | 2024-01-01 01:30:34 |
++--------+------------+-----------+----------+---------------------+
+1 row in set (0.00 sec)
+
